@@ -1,0 +1,138 @@
+body {
+  font-family: Arial, sans-serif;
+  background-image: linear-gradient(to bottom, #2248bb, #62589e);
+}
+
+.container {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  box-sizing: border-box;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  text-align: center;
+  color: #fff;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+input[type="text"],
+textarea,
+input[type="date"],
+select {
+  padding: 5px;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+button {
+  padding: 5px 10px;
+  font-size: 16px;
+  border-radius: 10px;
+}
+
+button:hover {
+  background-color: #2248bb;
+}
+
+label {
+  font-size: medium;
+  font-weight: bold;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+th,
+td {
+  padding: 10px;
+  text-align: left;
+}
+
+th {
+  background-color: #2248bb;
+  color: #fff;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.delete-button {
+  padding: 5px 10px;
+  font-size: 16px;
+  border-radius: 10px;
+  background-color: #ff0000;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+
+
+
+.delete-button:hover {
+  background-color: #cc0000;
+}
+
+.edit-button{
+  padding: 5px 10px;
+  font-size: 16px;
+  border-radius: 10px;
+  background-color: green;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+.edit-button:hover {
+  background-color:rgb(53, 255, 53);
+}
+
+
+
+/* APROMT STYLE*/
+.prompt-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.prompt-modal-content {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.prompt-modal h2 {
+  margin-top: 0;
+}
+
+.prompt-modal input,
+.prompt-modal textarea,
+.prompt-modal select {
+  margin-bottom: 10px;
+}
+
+.prompt-modal button {
+  padding: 5px 10px;
+  font-size: 16px;
+  border-radius: 10px;
+}

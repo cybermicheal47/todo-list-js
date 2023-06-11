@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Todo List</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+  <h1>Todo List</h1>
+  <div class="container">
+    <form id="todo-form">
+      <label for="title-input">Title</label>
+      <input type="text" id="title-input" placeholder="Title" required>
+      <label for="description-input">Description</label>
+      <textarea id="description-input" placeholder="Description" required></textarea>
+      <input type="date" id="due-date-input" required>
+      <label for="priority-select">Priority:</label>
+      <select id="priority-select" name="priority-select"   >
+        <option value="low">Low</option>
+        <option value="medium">Medium</option>
+        <option value="high">High</option>
+      </select>
+      <button type="submit">Add</button>
+    </form>
+   
+  </div>
+
+
+  <table id="todo-table">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Due Date</th>
+        <th>Priority</th>
+        <th>Edit</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody id="todo-body">
+      <!-- Todo items will be dynamically rendered here -->
+    </tbody>
+  </table>
+  
+
+
+
+
+
+
+
+
+
+  <script src="script.js"></script>
+</body>
+</html>
