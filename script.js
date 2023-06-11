@@ -1,8 +1,7 @@
-// Array to store todo-list 
+// Array to store the todo-list
 let mytodo = [];
 
-
-// todo constructor function
+// Todo constructor function
 function todo(title, description, date, priority) {
   this.title = title;
   this.description = description;
@@ -10,70 +9,65 @@ function todo(title, description, date, priority) {
   this.priority = priority;
 }
 
-
-
-// Function to render the library display
+// Function to render the todo display
 function render() {
-    let tododisplay = document.getElementById("todo-body");
-    tododisplay.innerHTML = "";
-  
-    // Iterate over each book in the library
-    for (let i = 0; i < mytodo.length; i++) {
-      let todo = mytodo[i];
-      let todoel = document.createElement("tr");
-  
-      // Create table cells and populate them with book information
-      todoel.innerHTML = `
-        <td>${todo.title}</td>
-        <td>${todo.description}</td>
-        <td>${todo.date}</td>
-        <td>${todo.priority}</td>
-        <td><button onclick="editTodoItem(${i})">Edit</button></td>
-        <td><button onclick="removetodo(${i})">Delete</button></td>
-      `;
-  
-      // Append the book row to the library display table body
-      tododisplay.appendChild(todoel);
-    }
+  let tododisplay = document.getElementById("todo-body");
+  tododisplay.innerHTML = "";
+
+  // Iterate over each todo in the todo-list
+  for (let i = 0; i < mytodo.length; i++) {
+    let todo = mytodo[i];
+    let todoel = document.createElement("tr");
+
+    // Create table cells and populate them with todo-list information
+    todoel.innerHTML = `
+      <td>${todo.title}</td>
+      <td>${todo.description}</td>
+      <td>${todo.date}</td>
+      <td>${todo.priority}</td>
+      <td><button onclick="editTodoItem(${i})">Edit</button></td>
+      <td><button onclick="removetodo(${i})">Delete</button></td>
+    `;
+
+    // Append the todo row to the todo-list display table body
+    tododisplay.appendChild(todoel);
   }
+}
 
-
-
-// Function to add a book to the library
+// Function to add a todo to the todo-list
 function addtodo() {
-    let  title = document.querySelector("#title-input").value;
-    let description = document.querySelector("#description-input").value;
-    let date = document.querySelector("#due-date-input").value;
-   let priority = document.querySelector("#priority-select").value || "No Priority"; // Default value when no priority is selected
-  
-    // Create a new book instance 
-    let newtodo = new todo(title, description, date, priority);
-  
-    // Add the new book to the library array
-    mytodo.push(newtodo);
-  
-    // Render the updated library display
-    render();
-  }
+  let title = document.querySelector("#title-input").value;
+  let description = document.querySelector("#description-input").value;
+  let date = document.querySelector("#due-date-input").value;
+  let priority = document.querySelector("#priority-select").value || "No Priority"; // Default value when no priority is selected
 
+  // Create a new todo instance
+  let newtodo = new todo(title, description, date, priority);
 
+  // Add the new todo to the todo-list array
+  mytodo.push(newtodo);
 
+  // Render the updated todo display
+  render();
 
+  // Store the updated data in localStorage
+  storeData();
+}
 
+// Event listener for the form submission
+document.querySelector("#todo-form").addEventListener("submit", function (event) {
+  event.preventDefault();
+  addtodo();
+});
 
-  // Event listener for the form submission
-document.querySelector("#todo-form").addEventListener('submit', function(event) {
-    event.preventDefault();
-    addtodo();
-  });
-
-
-  // Function to remove a book from the library
+// Function to remove a todo from the todo-list
 function removetodo(index) {
-    mytodo.splice(index, 1);
-    render();
-  }
+  mytodo.splice(index, 1);
+  render();
 
+  // Store the updated data in localStorage
+  storeData();
+}
 
 // Function to edit a specific todo item
 function editTodoItem(index) {
@@ -124,7 +118,35 @@ function saveTodoItem(index) {
   let promptModal = document.querySelector(".prompt-modal");
   document.body.removeChild(promptModal);
 
-  // Render the updated todo list
+  // Render the updated todo display
   render();
+
+  // Store the updated data in localStorage
+  storeData();
 }
 
+// Storing data in localStorage
+function storeData() {
+  // Assuming mytodo is the array containing your todo items
+  localStorage.setItem("mytodo", JSON.stringify(mytodo));
+}
+
+// Call the storeData() function whenever you want to store the data
+
+// Retrieving data from localStorage
+function retrieveData() {
+  let storedData = localStorage.getItem("mytodo");
+
+  // Check if data exists in localStorage
+  if (storedData) {
+    mytodo = JSON.parse(storedData);
+    render(); // Update the display with the retrieved data
+  }
+}
+
+// Call the retrieveData() function whenever you want to retrieve the stored data
+
+// Event listener for page load
+window.addEventListener("load", function () {
+  retrieveData();
+});
